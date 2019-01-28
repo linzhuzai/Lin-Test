@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 属性配置顺序，不能颠倒：
+properties 属性
+settings 设置
+typeAliases 类型别名
+typeHandlers 类型处理器
+objectFactory 对象工厂
+plugins 插件
+environments 环境
+environment 环境变量
+transactionManager 事务管理器
+dataSource 数据源
+databaseIdProvider 数据库厂商标识
+mappers 映射器
+ -->
+<configuration>
+	<properties resource="config.properties"/>
+	
+	<!-- 定义类别名 -->
+	<typeAliases>
+	    <typeAlias type="org.mybatis.example.User" alias="_User"/>
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="org/mybatis/example/userMapper.xml" />
+	</mappers>
+	
+</configuration>

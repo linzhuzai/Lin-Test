@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="Running Platform" sequenceNumber="4">
+<locations>
+<location path="${eclipse_home}" type="Profile"/>
+</locations>
+<environment>
+<os>win32</os>
+<ws>win32</ws>
+<arch>x86_64</arch>
+<nl>zh_CN</nl>
+</environment>
+<launcherArgs>
+<vmArgs>-Dosgi.requiredJavaVersion=1.6 -server -Xms1g -Xmx1g -Xmn700m -XX:SurvivorRatio=7 -XX:PermSize=180m -XX:MaxPermSize=180m -XX:+UseParallelGC -XX:ParallelGCThreads=8 -XX:+UseFastAccessorMethods -XX:+UseCompressedOops -XX:-UseAdaptiveSizePolicy -XX:+PrintGCTimeStamps -XX:+PrintGCDetails -verbose:gc -Xloggc:gc.log</vmArgs>
+</launcherArgs>
+</target>

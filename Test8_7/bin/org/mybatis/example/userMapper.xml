@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.example.UserMapper">
+  <resultMap id="BaseResultMap" type="org.mybatis.example.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="loginName" jdbcType="VARCHAR" property="loginname" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="phoneNumber" jdbcType="VARCHAR" property="phonenumber" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="birth" jdbcType="VARCHAR" property="birth" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, loginName, password, name, gender, phoneNumber, email, description, birthday, 
+    birth
+  </sql>
+  
+  <select id="selectUser" resultType="org.mybatis.example.User">
+		select * from User where id = #{id}
+	</select>
+		
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="org.mybatis.example.User">
+    insert into user (id, loginName, password, 
+      name, gender, phoneNumber, 
+      email, description, birthday, 
+      birth)
+    values (#{id,jdbcType=BIGINT}, #{loginname,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, 
+      #{birth,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.mybatis.example.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="loginname != null">
+        loginName,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="phonenumber != null">
+        phoneNumber,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="birth != null">
+        birth,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="loginname != null">
+        #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null">
+        #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="birth != null">
+        #{birth,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.mybatis.example.User">
+    update user
+    <set>
+      <if test="loginname != null">
+        loginName = #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null">
+        phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="birth != null">
+        birth = #{birth,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.mybatis.example.User">
+    update user
+    set loginName = #{loginname,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      birth = #{birth,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

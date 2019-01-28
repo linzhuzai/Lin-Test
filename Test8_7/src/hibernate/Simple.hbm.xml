@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="hibernate.Simple" table="sys_simple">
+		<id name="id" type="integer">
+			<column name="id"></column>
+			<generator class="native"></generator>
+		</id>
+		<property name="title" type="string">
+			<column name="title" sql-type="varchar(100)"></column>
+		</property>
+		<property name="date" type="timestamp">
+			<column name="date"></column>
+		</property>
+	</class>
+</hibernate-mapping>
